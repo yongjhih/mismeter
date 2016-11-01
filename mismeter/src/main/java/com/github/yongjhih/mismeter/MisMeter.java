@@ -16,8 +16,6 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 
-import static com.github.yongjhih.mismeter.R.styleable.MisMeter_show_text;
-
 /**
  * Without other unnessary resources such like layout xml and drawable img.
  */
