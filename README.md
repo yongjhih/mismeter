@@ -9,6 +9,8 @@
 <!--[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c583ae8fff9f4855954133c9146a11e4)](https://codacy.com/app/yongjhih/mismeter)-->
 <!--[![Download](https://api.bintray.com/packages/yongjhih/maven/mismeter/images/download.svg)](https://bintray.com/yongjhih/maven/mismeter/_latestVersion)-->
 
+![](art/mismeter.png)
+
 ![](art/screenshot.png)
 
 ## Usage
