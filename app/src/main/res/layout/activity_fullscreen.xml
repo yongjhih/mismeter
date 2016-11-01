@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d81a60"
+    tools:context=".FullscreenActivity"
+    android:id="@+id/fullscreen"
+    android:orientation="vertical"
+    >
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="-25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            >
+                <com.github.yongjhih.mismeter.MisMeter
+                    android:id="@+id/meter2"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    />
+                <com.github.yongjhih.mismeter.MisMeter
+                    android:id="@+id/meter3"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+
+                    />
+        </LinearLayout>
+
+        <com.github.yongjhih.mismeter.MisMeter
+            android:id="@+id/meter"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-25dp"
+            />
+</LinearLayout>
