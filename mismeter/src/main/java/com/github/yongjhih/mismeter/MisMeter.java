@@ -1,6 +1,7 @@
 package com.github.yongjhih.mismeter;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -14,6 +15,8 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+
+import static com.github.yongjhih.mismeter.R.styleable.MisMeter_show_text;
 
 /**
  * Without other unnessary resources such like layout xml and drawable img.
@@ -74,6 +77,8 @@ public class MisMeter extends View {
 
     public float progress = 0f; // TODO private
 
+    private boolean mShowText = true;
+
     public MisMeter(@NonNull Context context) {
         this(context, null);
     }
@@ -84,10 +89,12 @@ public class MisMeter extends View {
 
     public MisMeter(@NonNull Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context.obtainStyledAttributes(attrs, R.styleable.MisMeter));
     }
 
-    private void init() {
+    private void init(TypedArray attrs) {
+        mShowText = attrs.getBoolean(R.styleable.MisMeter_show_text, mShowText);
+
         defaultSize = dp2px(250);
         arcDistance = dp2px(12);
 
@@ -209,8 +216,10 @@ public class MisMeter extends View {
         //mTextPaint.setTextSize(dp2px(12)); // FIXME
         //canvas.drawText(String.valueOf(mMaxNum), width - dp2px(65), height - dp2px(38), mTextPaint); // FIXME
 
-        mCurrentTextPaint.setTextSize(dp2px(38)); // FIXME
-        canvas.drawText(String.valueOf(mCurrentNum), radius , height - arcDistance, mCurrentTextPaint);
+        if (mShowText) {
+            mCurrentTextPaint.setTextSize(dp2px(38)); // FIXME
+            canvas.drawText(String.valueOf(mCurrentNum), radius, height - arcDistance, mCurrentTextPaint);
+        }
     }
 
     /**
