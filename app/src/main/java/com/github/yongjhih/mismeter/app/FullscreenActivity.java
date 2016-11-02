@@ -1,6 +1,7 @@
 package com.github.yongjhih.mismeter.app;
 
 import android.animation.ValueAnimator;
+import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -88,7 +89,7 @@ public class FullscreenActivity extends AppCompatActivity {
         animate(meter, (new Random().nextFloat() % 0.5f) + 0.3f);
     }
 
-    private void animate(@NonNull final MisMeter meter, float progress) {
+    private void animate(@NonNull final MisMeter meter, @FloatRange(from = 0.0f, to=1.0f) float progress) {
         ValueAnimator anim = ValueAnimator.ofFloat(meter.progress, progress);
         if (meter.progress > progress) {
             anim.setInterpolator(new DecelerateInterpolator());

@@ -12,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
@@ -264,7 +265,7 @@ public class MisMeter extends View {
         return result;
     }
 
-    public void setProgress(float progress) {
+    public void setProgress(@FloatRange(from = 0.0f, to=1.0f) float progress) {
         this.progress = progress;
         mCurrentNum = (int) (progress * mMaxNum);
         mCurrentAngle = mMaxAngle * progress;
