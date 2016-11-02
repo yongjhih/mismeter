@@ -1,5 +1,7 @@
 package com.github.yongjhih.mismeter;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -16,6 +18,10 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+
+import java.util.Random;
 
 /**
  * Without other unnessary resources such like layout xml and drawable img.
@@ -281,5 +287,23 @@ public class MisMeter extends View {
     public int dp2px(int values) {
         float density = getResources().getDisplayMetrics().density;
         return (int) (values * density + 0.5f);
+    }
+
+    public void animate(@FloatRange(from = 0.0f, to=1.0f) float progress) {
+        ValueAnimator anim = ValueAnimator.ofFloat(this.progress, progress);
+        if (this.progress > progress) {
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.setDuration(750);
+        } else {
+            anim.setInterpolator(new AccelerateDecelerateInterpolator());
+            anim.setDuration(500);
+        }
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                MisMeter.this.setProgress((float) valueAnimator.getAnimatedValue());
+            }
+        });
+        anim.start();
     }
 }

@@ -84,26 +84,7 @@ public class FullscreenActivity extends AppCompatActivity {
         mSubs.unsubscribe();
     }
 
-    // TODO built-in MisMeter?
     private void animate(@NonNull MisMeter meter) {
-        animate(meter, (new Random().nextFloat() % 0.5f) + 0.3f);
-    }
-
-    private void animate(@NonNull final MisMeter meter, @FloatRange(from = 0.0f, to=1.0f) float progress) {
-        ValueAnimator anim = ValueAnimator.ofFloat(meter.progress, progress);
-        if (meter.progress > progress) {
-            anim.setInterpolator(new DecelerateInterpolator());
-            anim.setDuration(750);
-        } else {
-            anim.setInterpolator(new AccelerateDecelerateInterpolator());
-            anim.setDuration(500);
-        }
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                meter.setProgress((float) valueAnimator.getAnimatedValue());
-            }
-        });
-        anim.start();
+        meter.animate((new Random().nextFloat() % 0.5f) + 0.3f);
     }
 }
