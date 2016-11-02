@@ -17,6 +17,9 @@ script:
     - ./gradlew clean assemble check
 after_success:
     - ./gradlew coveralls
+licenses:
+  - android-sdk-license-.+
+  - '.+'
 
 # as per http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 sudo: false
