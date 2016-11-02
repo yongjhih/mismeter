@@ -43,6 +43,10 @@ anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 anim.start();
 ```
 
+## Stylable
+
+* `app:show_text="true"`
+
 ## Installation
 
 ```gradle
