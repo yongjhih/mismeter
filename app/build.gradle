@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -58,6 +58,7 @@ dependencies {
     compile 'com.github.JakeWharton:kotterknife:-SNAPSHOT'
     compile 'com.larswerkman:lobsterpicker:1.0.1'
     compile 'org.adw.library:discrete-seekbar:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
 
     compile 'com.trello:rxlifecycle:0.8.0'
     compile 'com.trello:rxlifecycle-android:0.8.0'

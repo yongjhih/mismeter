@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,61 +8,70 @@
     tools:context=".FullscreenActivity"
     android:id="@+id/fullscreen"
     android:orientation="vertical">
+
+    <com.github.yongjhih.mismeter.MisMeter
+        android:id="@+id/meter2"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.github.yongjhih.mismeter.MisMeter
+        android:id="@+id/meter3"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.yongjhih.mismeter.MisMeter
+        android:id="@+id/meter"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="152dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/meter"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp">
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"
+            app:dsb_indicatorColor="#5fff"
+            app:dsb_max="100"
+            app:dsb_min="0"
+            app:dsb_progressColor="#ffff"
+            app:dsb_value="80" />
+
         <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="-25dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center"
-            >
-                <com.github.yongjhih.mismeter.MisMeter
-                    android:id="@+id/meter2"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    />
-                <com.github.yongjhih.mismeter.MisMeter
-                    android:id="@+id/meter3"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-
-                    />
-        </LinearLayout>
-
-        <com.github.yongjhih.mismeter.MisMeter
-            android:id="@+id/meter"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="-25dp"
+            android:id="@+id/colors"
             />
-        <LinearLayout
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="40dp"
-            android:orientation="vertical">
 
-                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progress"
-                    app:dsb_indicatorColor="#5fff"
-                    app:dsb_max="100"
-                    app:dsb_min="0"
-                    app:dsb_progressColor="#ffff"
-                    app:dsb_value="80" />
-
-                <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/colors"
-                    android:layout_marginTop="5dp" />
-
-        </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
