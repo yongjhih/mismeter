@@ -1,7 +1,7 @@
 # MisMeter
 
 [![JitPack](https://img.shields.io/github/tag/yongjhih/mismeter.svg?label=JitPack)](https://jitpack.io/#yongjhih/mismeter)
-[![javadoc](https://img.shields.io/github/tag/yongjhih/mismeter.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/mismeter/mismeter/javadoc/)
+[![javadoc](https://img.shields.io/github/tag/yongjhih/mismeter.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/mismeter/-SNAPSHOT/javadoc/)
 [![Build Status](https://travis-ci.org/yongjhih/mismeter.svg)](https://travis-ci.org/yongjhih/mismeter)
 [![Coverage Status](https://coveralls.io/repos/github/yongjhih/mismeter/badge.svg)](https://coveralls.io/github/yongjhih/mismeter)
 
