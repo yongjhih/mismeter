@@ -56,6 +56,8 @@ dependencies {
     compile 'io.reactivex:rxjava:1.2.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.github.JakeWharton:kotterknife:-SNAPSHOT'
+    compile 'com.larswerkman:lobsterpicker:1.0.1'
+    compile 'org.adw.library:discrete-seekbar:1.0.1'
 
     compile 'com.trello:rxlifecycle:0.8.0'
     compile 'com.trello:rxlifecycle-android:0.8.0'

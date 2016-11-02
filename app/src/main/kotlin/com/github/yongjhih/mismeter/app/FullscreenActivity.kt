@@ -3,6 +3,7 @@ package com.github.yongjhih.mismeter.app
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.support.annotation.ColorInt
 import android.view.View
 
 import java.util.Random
@@ -13,6 +14,9 @@ import rx.subscriptions.CompositeSubscription
 
 import com.github.yongjhih.mismeter.*
 import kotterknife.bindView
+import com.larswerkman.lobsterpicker.OnColorListener
+import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
 
 // RxJava2, RxLifecycle instead?
 class FullscreenActivity : AppCompatActivity() {
@@ -21,6 +25,8 @@ class FullscreenActivity : AppCompatActivity() {
     val meter: MisMeter by bindView(R.id.meter)
     val meter2: MisMeter by bindView(R.id.meter2)
     val meter3: MisMeter by bindView(R.id.meter3)
+    val progress: DiscreteSeekBar by bindView(R.id.progress)
+    val colors: LobsterShadeSlider by bindView(R.id.colors)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +37,35 @@ class FullscreenActivity : AppCompatActivity() {
 
         mSubs.add(Observable.interval(1, TimeUnit.SECONDS).subscribe({ l ->
             handler.post {
-                animate(meter)
                 animate(meter2)
                 animate(meter3)
             }
         }))
+
+        progress.setOnProgressChangeListener(object : DiscreteSeekBar.OnProgressChangeListener {
+            override fun onStopTrackingTouch(seekBar: DiscreteSeekBar?) {
+                // nothing
+            }
+
+            override fun onStartTrackingTouch(seekBar: DiscreteSeekBar?) {
+                // nothing
+            }
+
+            override fun onProgressChanged(seekBar: DiscreteSeekBar, value: Int, fromUser: Boolean) {
+                meter.setProgress(value / 100f)
+            }
+        })
+
+        colors.addOnColorListener(object: OnColorListener {
+            override fun onColorSelected(color: Int) {
+                // nothing
+            }
+
+            override fun onColorChanged(@ColorInt color: Int) {
+                meter.setTextColor(color)
+                meter.setProgress(meter.progress)
+            }
+        })
     }
 
     override fun onResume() {

@@ -14,6 +14,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -305,5 +306,9 @@ public class MisMeter extends View {
             }
         });
         anim.start();
+    }
+
+    public void setTextColor(@ColorInt int color) {
+        mCurrentTextPaint.setColor(color);
     }
 }

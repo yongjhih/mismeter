@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d81a60"
     tools:context=".FullscreenActivity"
     android:id="@+id/fullscreen"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -40,4 +40,28 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="-25dp"
             />
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:orientation="vertical">
+
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress"
+                    app:dsb_indicatorColor="#5fff"
+                    app:dsb_max="100"
+                    app:dsb_min="0"
+                    app:dsb_progressColor="#ffff"
+                    app:dsb_value="80" />
+
+                <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/colors"
+                    android:layout_marginTop="5dp" />
+
+        </LinearLayout>
 </LinearLayout>
