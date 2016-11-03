@@ -16,7 +16,7 @@
 ## Usage
 
 ```xml
-<com.github.yongjhih.MisMeter
+<com.github.yongjhih.mismeter.MisMeter
     android:id="@+id/meter"
     android:layout_width="200dp"
     android:layout_height="200dp"
