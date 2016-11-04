@@ -153,6 +153,8 @@ public class MisMeter extends View {
         // TODO Allow color parameter
         mWarningMiddleArcPaint.setColor(Color.parseColor("#eef3797b"));
         mWarningMiddleArcPaint.setStyle(Paint.Style.STROKE);
+
+        attrs.recycle();
     }
 
     @Override
