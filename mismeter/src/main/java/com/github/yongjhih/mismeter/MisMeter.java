@@ -61,7 +61,7 @@ public class MisMeter extends View {
 
     private int mMinNum = 0;
 
-    private int mMaxNum = 100; // TODO
+    private int mMaxNum = 100;
 
     private int mCurrentNum = 0;
 
@@ -85,6 +85,10 @@ public class MisMeter extends View {
 
     private boolean mShowText = true;
 
+    private String mFont = "sans-serif-condensed";
+    private int mTextColor = 0x99ffffff;
+    private boolean mShowStartEndText = false;
+
     public MisMeter(@NonNull Context context) {
         this(context, null);
     }
@@ -100,6 +104,11 @@ public class MisMeter extends View {
 
     private void init(TypedArray attrs) {
         mShowText = attrs.getBoolean(R.styleable.MisMeter_show_text, mShowText);
+        mFont = attrs.getString(R.styleable.MisMeter_font);
+        mTextColor = attrs.getColor(R.styleable.MisMeter_text_color, mTextColor);
+        mShowStartEndText = attrs.getBoolean(R.styleable.MisMeter_show_start_end_text, mShowStartEndText);
+        mMaxNum = attrs.getInt(R.styleable.MisMeter_max, mMaxNum);
+        mMinNum = attrs.getInt(R.styleable.MisMeter_min, mMinNum);
 
         defaultSize = dp2px(250);
         arcDistance = dp2px(12);
@@ -117,14 +126,14 @@ public class MisMeter extends View {
         mOuterArcPaint.setAlpha(230);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setColor(Color.parseColor("#99ffffff")); // TODO
+        mTextPaint.setColor(mTextColor);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
-        mTextPaint.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL)); // TODO
+        mTextPaint.setTypeface(Typeface.create(mFont, Typeface.NORMAL));
 
         mCurrentTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCurrentTextPaint.setColor(Color.WHITE);
         mCurrentTextPaint.setTextAlign(Paint.Align.CENTER);
-        mCurrentTextPaint.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL)); // TODO
+        mCurrentTextPaint.setTypeface(Typeface.create(mFont, Typeface.NORMAL));
 
         mArcProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcProgressPaint.setStrokeWidth(18);
@@ -217,12 +226,14 @@ public class MisMeter extends View {
     private void drawCenterText(@NonNull Canvas canvas) {
         // TODO measureText for aligning
 
-        //mTextPaint.setTextSize(dp2px(12)); // FIXME
-        //mTextPaint.setStyle(Paint.Style.STROKE);
-        //canvas.drawText(String.valueOf(mMinNum), dp2px(60), height - dp2px(38), mTextPaint); // FIXME
 
-        //mTextPaint.setTextSize(dp2px(12)); // FIXME
-        //canvas.drawText(String.valueOf(mMaxNum), width - dp2px(65), height - dp2px(38), mTextPaint); // FIXME
+        if (mShowStartEndText) {
+            mTextPaint.setTextSize(dp2px(12)); // FIXME
+            mTextPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawText(String.valueOf(mMinNum), dp2px(60), height - dp2px(38), mTextPaint); // FIXME
+            //mTextPaint.setTextSize(dp2px(12)); // FIXME
+            canvas.drawText(String.valueOf(mMaxNum), width - dp2px(65), height - dp2px(38), mTextPaint); // FIXME
+        }
 
         if (mShowText) {
             mCurrentTextPaint.setTextSize(dp2px(38)); // FIXME
@@ -276,7 +287,7 @@ public class MisMeter extends View {
 
     public void setProgress(@FloatRange(from = 0.0f, to=1.0f) float progress) {
         this.progress = progress;
-        mCurrentNum = (int) (progress * mMaxNum);
+        mCurrentNum = (int) ((progress * (mMaxNum - mMinNum)) + mMinNum);
         mCurrentAngle = mMaxAngle * progress;
         postInvalidate();
     }
