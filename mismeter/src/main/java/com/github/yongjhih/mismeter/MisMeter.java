@@ -86,6 +86,8 @@ public class MisMeter extends View {
     private boolean mShowText = true;
 
     private String mFont = "sans-serif-condensed";
+    private int mTextColor = 0x99ffffff;
+    private boolean mShowStartEndText = false;
 
     public MisMeter(@NonNull Context context) {
         this(context, null);
@@ -103,6 +105,8 @@ public class MisMeter extends View {
     private void init(TypedArray attrs) {
         mShowText = attrs.getBoolean(R.styleable.MisMeter_show_text, mShowText);
         mFont = attrs.getString(R.styleable.MisMeter_font);
+        mTextColor = attrs.getColor(R.styleable.MisMeter_text_color, mTextColor);
+        mShowStartEndText = attrs.getBoolean(R.styleable.MisMeter_show_start_end_text, mShowStartEndText);
 
         defaultSize = dp2px(250);
         arcDistance = dp2px(12);
@@ -120,7 +124,7 @@ public class MisMeter extends View {
         mOuterArcPaint.setAlpha(230);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setColor(Color.parseColor("#99ffffff")); // TODO
+        mTextPaint.setColor(mTextColor);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTypeface(Typeface.create(mFont, Typeface.NORMAL));
 
@@ -220,12 +224,14 @@ public class MisMeter extends View {
     private void drawCenterText(@NonNull Canvas canvas) {
         // TODO measureText for aligning
 
-        //mTextPaint.setTextSize(dp2px(12)); // FIXME
-        //mTextPaint.setStyle(Paint.Style.STROKE);
-        //canvas.drawText(String.valueOf(mMinNum), dp2px(60), height - dp2px(38), mTextPaint); // FIXME
 
-        //mTextPaint.setTextSize(dp2px(12)); // FIXME
-        //canvas.drawText(String.valueOf(mMaxNum), width - dp2px(65), height - dp2px(38), mTextPaint); // FIXME
+        if (mShowStartEndText) {
+            mTextPaint.setTextSize(dp2px(12)); // FIXME
+            mTextPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawText(String.valueOf(mMinNum), dp2px(60), height - dp2px(38), mTextPaint); // FIXME
+            //mTextPaint.setTextSize(dp2px(12)); // FIXME
+            canvas.drawText(String.valueOf(mMaxNum), width - dp2px(65), height - dp2px(38), mTextPaint); // FIXME
+        }
 
         if (mShowText) {
             mCurrentTextPaint.setTextSize(dp2px(38)); // FIXME
