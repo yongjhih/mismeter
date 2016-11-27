@@ -27,8 +27,10 @@
         <!--format="color"/>-->
     <!--<attr name="digital_number_blur_color"-->
         <!--format="color"/>-->
-    <!--<attr name="max"-->
-        <!--format="integer"/>-->
+    <attr name="max"
+        format="integer"/>
+    <attr name="min"
+          format="integer" />
     <!--<attr name="units"-->
         <!--format="string"/>-->
   </declare-styleable>

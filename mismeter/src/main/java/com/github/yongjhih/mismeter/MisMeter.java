@@ -61,7 +61,7 @@ public class MisMeter extends View {
 
     private int mMinNum = 0;
 
-    private int mMaxNum = 100; // TODO
+    private int mMaxNum = 100;
 
     private int mCurrentNum = 0;
 
@@ -107,6 +107,8 @@ public class MisMeter extends View {
         mFont = attrs.getString(R.styleable.MisMeter_font);
         mTextColor = attrs.getColor(R.styleable.MisMeter_text_color, mTextColor);
         mShowStartEndText = attrs.getBoolean(R.styleable.MisMeter_show_start_end_text, mShowStartEndText);
+        mMaxNum = attrs.getInt(R.styleable.MisMeter_max, mMaxNum);
+        mMinNum = attrs.getInt(R.styleable.MisMeter_min, mMinNum);
 
         defaultSize = dp2px(250);
         arcDistance = dp2px(12);
@@ -285,7 +287,7 @@ public class MisMeter extends View {
 
     public void setProgress(@FloatRange(from = 0.0f, to=1.0f) float progress) {
         this.progress = progress;
-        mCurrentNum = (int) (progress * mMaxNum);
+        mCurrentNum = (int) ((progress * (mMaxNum - mMinNum)) + mMinNum);
         mCurrentAngle = mMaxAngle * progress;
         postInvalidate();
     }
