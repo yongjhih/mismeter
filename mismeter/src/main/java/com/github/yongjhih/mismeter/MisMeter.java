@@ -85,6 +85,8 @@ public class MisMeter extends View {
 
     private boolean mShowText = true;
 
+    private String mFont = "sans-serif-condensed";
+
     public MisMeter(@NonNull Context context) {
         this(context, null);
     }
@@ -100,6 +102,7 @@ public class MisMeter extends View {
 
     private void init(TypedArray attrs) {
         mShowText = attrs.getBoolean(R.styleable.MisMeter_show_text, mShowText);
+        mFont = attrs.getString(R.styleable.MisMeter_font);
 
         defaultSize = dp2px(250);
         arcDistance = dp2px(12);
@@ -119,12 +122,12 @@ public class MisMeter extends View {
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.parseColor("#99ffffff")); // TODO
         mTextPaint.setTextAlign(Paint.Align.CENTER);
-        mTextPaint.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL)); // TODO
+        mTextPaint.setTypeface(Typeface.create(mFont, Typeface.NORMAL));
 
         mCurrentTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCurrentTextPaint.setColor(Color.WHITE);
         mCurrentTextPaint.setTextAlign(Paint.Align.CENTER);
-        mCurrentTextPaint.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL)); // TODO
+        mCurrentTextPaint.setTypeface(Typeface.create(mFont, Typeface.NORMAL));
 
         mArcProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcProgressPaint.setStrokeWidth(18);

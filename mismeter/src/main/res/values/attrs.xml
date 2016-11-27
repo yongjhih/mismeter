@@ -3,7 +3,8 @@
   <declare-styleable name="MisMeter">
     <attr name="show_text"
         format="boolean" />
-
+    <attr name="font"
+        format="string" />
     <!--<attr name="inside_progress_color"-->
         <!--format="color"/>-->
     <!--<attr name="external_progress_color"-->
